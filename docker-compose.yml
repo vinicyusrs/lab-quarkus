@@ -64,7 +64,7 @@ services:
   database:
     image: mariadb:10.11.2
     environment:
-      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_ROOT_PASSWORD=@YWRtaW46YWRtaW44
 
   # CACHING - https://quarkus.io/guides/redis
 
@@ -96,7 +96,7 @@ services:
     image: graylog/graylog:5.0.5
     environment:
       GRAYLOG_HTTP_EXTERNAL_URI: "http://localhost:9000/"
-      GRAYLOG_PASSWORD_SECRET: "forpasswordencryption" # CHANGE ME (must be at least 16 characters)!
+      GRAYLOG_PASSWORD_SECRET: "@YWRtaW46YWRtaW44" # CHANGE ME (must be at least 16 characters)!
       GRAYLOG_ROOT_PASSWORD_SHA2: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" # Password: admin
       GRAYLOG_HTTP_BIND_ADDRESS: "0.0.0.0:9000"
       GRAYLOG_ELASTICSEARCH_HOSTS: "http://opensearch:9200"
