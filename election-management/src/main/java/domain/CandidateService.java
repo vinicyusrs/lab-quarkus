@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.List;
-
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
@@ -29,5 +28,9 @@ public class CandidateService {
 		// TODO Auto-generated method stub
 		return repository.findAll();
 		
+	}
+
+	public Candidate findById(String id) {	
+		return repository.findById(id).orElseThrow();	
 	}
 }

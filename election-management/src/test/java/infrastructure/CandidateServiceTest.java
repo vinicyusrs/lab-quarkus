@@ -1,8 +1,13 @@
 package infrastructure;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.inject.Inject;
@@ -37,12 +42,47 @@ class CandidateServiceTest {
 		
 		verify(repository).save(candidate);
 		verifyNoMoreInteractions(repository);
-		
 	}
 	
 	@Test
 	void findAll() {
-		service.findAll();
+		List<Candidate> candidates = Instancio.stream(Candidate.class).limit(10).toList();
+		
+		when(repository.findAll()).thenReturn(candidates);
+		List<Candidate> result = service.findAll();
+		
+		assertEquals(candidates, result);
+		verify(repository).findAll();
+		verifyNoMoreInteractions(repository);
+		
+		assertEquals(candidates, result);
+	}
+	
+	@Test
+	void findById() {
+		// isso popula os dados de candidate ou de qualquer classe -- recomendado
+		Candidate candidate = Instancio.create(Candidate.class);
+		when(repository.findById(candidate.id())).thenReturn(Optional.of(candidate));
+		
+		//String id = Instancio.stream(Candidate.getidclass);
+		Candidate result = service.findById(candidate.id());
+		
+		verify(repository).findById(candidate.id());
+		verifyNoMoreInteractions(repository);
+		
+		assertEquals(candidate, result);
+	}
+	
+	@Test
+	void findById_whenCandidateIsNotFound_throwsException() {
+		// isso popula os dados de candidate ou de qualquer classe -- recomendado
+		Candidate candidate = Instancio.create(Candidate.class);
+		when(repository.findById(candidate.id())).thenReturn(Optional.empty());
+		
+		assertThrows(NoSuchElementException.class, () -> service.findById(candidate.id()));
+		
+		verify(repository).findById(candidate.id());
+		verifyNoMoreInteractions(repository);
 	}
 
 }

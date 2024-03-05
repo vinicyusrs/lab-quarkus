@@ -1,6 +1,7 @@
 package infrastructure.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import domain.Candidate;
 import domain.CandidateRepository;
@@ -19,6 +20,12 @@ public class SQLCandidateRepository implements CandidateRepository {
 	public List<Candidate> findAll() {
 		// TODO Auto-generated method stub
 		return List.of();
+	}
+
+	@Override
+	public Optional<Candidate> findById(String id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
 	}
 
 }
