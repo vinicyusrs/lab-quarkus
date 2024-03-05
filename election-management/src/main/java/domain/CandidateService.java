@@ -14,10 +14,6 @@ public class CandidateService {
 		this.repository = repository;
 	}
 
-	public void save() {
-		
-	}
-
 	public void save(Candidate candidate) {
 		// TODO Auto-generated method stub
 		repository.save(candidate);

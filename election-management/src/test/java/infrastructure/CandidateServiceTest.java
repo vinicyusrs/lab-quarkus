@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
@@ -37,8 +37,8 @@ class CandidateServiceTest {
 		// isso popula os dados de candidate ou de qualquer classe -- recomendado
 		Candidate candidate = Instancio.create(Candidate.class);
 		
-//		Candidate candidate = new Candidate("", Optional.empty(), "", "", "", Optional.empty(), Optional.empty());
-//		service.save(candidate);
+// candidate = new Candidate("", Optional.empty(), "", "", "", Optional.empty(), Optional.empty());
+		service.save(candidate);
 		
 		verify(repository).save(candidate);
 		verifyNoMoreInteractions(repository);

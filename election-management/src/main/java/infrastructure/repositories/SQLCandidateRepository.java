@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import domain.Candidate;
+import domain.CandidateQuery;
 import domain.CandidateRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -16,16 +17,23 @@ public class SQLCandidateRepository implements CandidateRepository {
 		
 	}
 
-	@Override
-	public List<Candidate> findAll() {
-		// TODO Auto-generated method stub
-		return List.of();
-	}
+	//substituido pelo find do query
+//	@Override
+//	public List<Candidate> findAll() {
+//		// TODO Auto-generated method stub
+//		return List.of();
+//	}
+//
+//	@Override
+//	public Optional<Candidate> findById(String id) {
+//		// TODO Auto-generated method stub
+//		return Optional.empty();
+//	}
 
 	@Override
-	public Optional<Candidate> findById(String id) {
+	public List<Candidate> find(CandidateQuery query) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return List.of();
 	}
 
 }
