@@ -4,8 +4,10 @@ package infrastructure.repositories;
 
 import domain.CandidateRepository;
 import domain.CandidateRepositoryTest;
+import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 
+@QuarkusTest
 public class SQLCandidateRepositoryTest extends CandidateRepositoryTest{
 	
 	@Inject

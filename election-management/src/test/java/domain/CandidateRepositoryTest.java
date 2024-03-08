@@ -20,6 +20,6 @@ public abstract class CandidateRepositoryTest {
 		Optional<Candidate> result = repository().findById(candidate.id());
 		
 		assertTrue(result.isPresent());
-		assertEquals(candidate,result.get());
+		assertEquals(candidate, result.get());
 	}
 }
