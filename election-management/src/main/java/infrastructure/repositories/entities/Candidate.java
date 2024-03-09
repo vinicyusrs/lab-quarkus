@@ -1,9 +1,10 @@
 package infrastructure.repositories.entities;
 
+import java.util.Optional;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity(name = "candidates")
 public class Candidate {
@@ -94,6 +95,16 @@ public class Candidate {
 		
 		return entity;
 	}
+	
+	 public domain.Candidate toDomain() {
+	        return new domain.Candidate(getId(),
+	                                    Optional.ofNullable(getPhoto()),
+	                                    getGivenName(),
+	                                    getFamilyName(),
+	                                    getEmail(),
+	                                    Optional.ofNullable(getPhone()),
+	                                    Optional.ofNullable(getJobTitle()));
+	    }
 	
 	
 	
