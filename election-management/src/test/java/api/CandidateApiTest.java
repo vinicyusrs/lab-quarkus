@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.UUID;
 
-import javax.inject.Inject;
+
 
 import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
@@ -19,6 +19,7 @@ import domain.Candidate;
 import domain.CandidateService;
 import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
+import jakarta.inject.Inject;
 
 @QuarkusTest
 class CandidateApiTest {

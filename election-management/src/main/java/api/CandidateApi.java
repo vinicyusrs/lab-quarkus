@@ -1,5 +1,7 @@
 package api;
 
+import java.util.List;
+
 import api.dto.in.CreateCandidate;
 import api.dto.in.UpdateCandidate;
 import domain.Candidate;
@@ -17,7 +19,6 @@ public class CandidateApi {
 
 	public void create(CreateCandidate dto) {
 		// TODO Auto-generated method stub
-		
 		service.save(dto.toDomain());
 	}
 
@@ -27,6 +28,10 @@ public class CandidateApi {
 		Candidate candidate = service.findById(id);
 		
 		return api.dto.out.Candidate.fromDomain(candidate);
+	}
+	
+	public List<api.dto.out.Candidate> list() {
+		return service.findAll().stream().map(candidate -> api.dto.out.Candidate.fromDomain(candidate)).toList();
 	}
 	
 }
