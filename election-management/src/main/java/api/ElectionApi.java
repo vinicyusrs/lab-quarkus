@@ -1,5 +1,8 @@
 package api;
 
+import java.util.List;
+
+import domain.Election;
 import domain.ElectionService;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -14,5 +17,9 @@ public class ElectionApi {
 
     public void submit() {
         service.submit();
+    }
+    
+    public List<api.dto.out.Election> list() {
+        return service.findAll().stream().map(election -> api.dto.out.Election.fromDomain(election)).toList();
     }
 }

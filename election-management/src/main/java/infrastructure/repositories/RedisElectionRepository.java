@@ -53,4 +53,11 @@ public class RedisElectionRepository implements ElectionRepository{
 
         return new Election(election.id(), Map.ofEntries(map));
     }
+
+	@Override
+	public List<Election> findAll() {
+		// TODO Auto-generated method stub
+		
+		throw new UnsupportedOperationException();
+	}
 }

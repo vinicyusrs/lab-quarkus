@@ -9,11 +9,13 @@ import java.util.stream.Stream;
 import domain.Candidate;
 import domain.Election;
 import domain.ElectionRepository;
+import domain.annotations.Principal;
 import infrastructure.repositories.entities.ElectionCandidate;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 
+@Principal
 @ApplicationScoped
 public class SQLElectionRepository implements ElectionRepository{
 	
@@ -26,7 +28,7 @@ public class SQLElectionRepository implements ElectionRepository{
     @Override
     @Transactional
     public void submit(Election election) {
-        entityManager.merge(infrastructure.repositories.entities.Election.fromDomain(election));
+    	entityManager.merge(infrastructure.repositories.entities.Election.fromDomain(election));
 
         election.votes()
                 .entrySet()
