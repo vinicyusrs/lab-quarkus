@@ -19,7 +19,7 @@ public class ElectionApi {
         service.submit();
     }
     
-    public List<api.dto.out.Election> list() {
+    public List<api.dto.out.Election> findAll() {
         return service.findAll().stream().map(election -> api.dto.out.Election.fromDomain(election)).toList();
     }
 }
